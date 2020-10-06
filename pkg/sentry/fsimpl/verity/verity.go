@@ -150,6 +150,9 @@ func isEnabled(d *dentry) bool {
 	return !d.fs.allowRuntimeEnable || len(d.rootHash) != 0
 }
 
+// Release implements vfs.FilesystemType.Release.
+func (FilesystemType) Release(ctx context.Context) {}
+
 // alertIntegrityViolation alerts a violation of integrity, which usually means
 // unexpected modification to the file system is detected. In
 // noCrashOnVerificationFailure mode, it returns an error, otherwise it panic.
